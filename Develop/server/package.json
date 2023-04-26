@@ -1,0 +1,22 @@
+{
+    "name": "JATE",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "server": "nodemon server.js --ignore client"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1"
+    },
+    "devDependencies": {
+        "cli": "^1.0.1",
+        "css-loader": "^6.7.3",
+        "nodemon": "^2.0.4",
+        "style-loader": "^3.3.2",
+        "webpack": "^5.80.0"
+    }
+}
