@@ -39,7 +39,7 @@ module.exports = () => {
       }),
 
       new InjectManifest({
-        swSrc: '/Users/frankmonteon/Challenges/Challenge 19 - PWA Text Editor/Text Editor/PWA-Text-Editor/Develop/client/src-sw.js', 
+        swSrc: '/Users/frankmonteon/Challenges/Challenge 19 - PWA Text Editor/Text Editor/PWA-Text-Editor/develop/client/src-sw.js', 
         swDest: 'src-sw.js' 
       })
     ],
