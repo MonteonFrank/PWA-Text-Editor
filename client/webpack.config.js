@@ -2,7 +2,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = () => {
   return {
@@ -18,47 +17,50 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'Webpack Plugin',
+        title: 'Text Editor'
       }),
-      new MiniCssExtractPlugin(),
+     
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
+      }),
+
       new WebpackPwaManifest({
-        name: 'Text Editor with PWA',
+        fingerprints: false,
+        inject: true,
+        name: 'Text Editor with PWA - Challenge 19',
         short_name: 'Text Editor',
-        description: 'Text Editor using PWA for Challenge 18',
-        background_color: '#ffffff',
+        description: 'Save your text in this application!',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
+        start_url: './',
+        publicPath: './',
         icons: [
           {
-            src: path.resolve(__dirname, './src/images/logo.png'),
+            src: path.resolve('src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
           },
         ],
-        start_url:"./",
-        publicPath:"./",
-        orientation:"portrait"
       }),
-
-      new InjectManifest({
-        swSrc: '/Users/frankmonteon/Challenges/Challenge 19 - PWA Text Editor/Text Editor/PWA-Text-Editor/develop/client/src-sw.js', 
-        swDest: 'src-sw.js' 
-      })
     ],
 
     module: {
       rules: [
         {
           test: /\.css$/i,
-          use: [MiniCssExtractPlugin.loader, 'css-loader'],
+          use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.m?js$/,
-          exclude: /(node_modules|bower_components)/,
+          exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
-            }
-          }
+              presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
+            },
+          },
         },
       ],
     },
