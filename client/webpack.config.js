@@ -30,7 +30,7 @@ module.exports = () => {
         inject: true,
         name: 'Text Editor with PWA - Challenge 19',
         short_name: 'Text Editor',
-        description: 'Save your text in this application!',
+        description: 'Save your text in this application, please go ahead and test!',
         background_color: '#225ca3',
         theme_color: '#225ca3',
         start_url: './',
